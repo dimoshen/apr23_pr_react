@@ -32,9 +32,11 @@ export const App = () => {
     if (selectedCategories.includes(title)) {
       // eslint-disable-next-line max-len
       setSelectedCategories(selectedCategories.filter(category => category !== title));
-    } else {
-      setSelectedCategories([...selectedCategories, title]);
+
+      return;
     }
+
+    setSelectedCategories([...selectedCategories, title]);
   };
 
   const queryChangeHandler = (event) => {
@@ -135,7 +137,7 @@ export const App = () => {
                 className={classNames('button mr-2 my-1', {
                   'is-info': selectedCategories.length === 0,
                 })}
-                onClick={() => filterByCategoryHandler([])}
+                onClick={() => setSelectedCategories([])}
               >
                 All
               </a>
